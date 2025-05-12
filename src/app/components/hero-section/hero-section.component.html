@@ -1,0 +1,74 @@
+<section
+  #heroSection
+  class="hero-section relative min-h-screen w-screen overflow-hidden bg-black pb-20 pt-14"
+>
+  <!-- Full-width, full-height canvas -->
+  <canvas
+    #heroCanvas
+    class="absolute top-0 left-0 w-full h-full z-0"
+  ></canvas>
+
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/90 z-10"></div>
+
+  <!-- Floating particles or waves -->
+  <app-floating-elements class="absolute inset-0 z-20"></app-floating-elements>
+
+  <!-- Main Content -->
+  <div class="relative z-30 px-8 sm:px-12 md:px-16 lg:px-24">
+    <div class="max-w-screen-xl mx-auto">
+      <!-- Heading -->
+      <h1
+        *ngIf="isVisible"
+        @fadeInUp
+        class="text-5xl md:text-7xl font-bold mb-6 leading-[1.3] pb-4 text-white"
+      >
+        <span
+          class="block bg-clip-text text-transparent bg-gradient-to-r from-[#f5f1dc] to-[#f5f1dc]"
+        >
+          Transform Your Digital <br> Presence
+        </span>
+        <span class="block mt-2">
+          <span class="text-[#f5f1dc]">With </span>
+          <app-typed-text
+            [texts]="typingTexts"
+            class="inline-block align-bottom bg-clip-text text-transparent bg-gradient-to-r from-[#fcd34d] to-[#FAE753] font-bold"
+          ></app-typed-text>
+        </span>
+      </h1>
+
+      <!-- Description -->
+      <p
+        *ngIf="isVisible"
+        @fadeInUp
+        class="text-xl md:text-2xl text-[#f5f1dc] mb-10 max-w-5xl"
+      >
+        We craft immersive digital experiences that captivate your audience and
+        drive results. From concept to launch, our team delivers excellence.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div
+        *ngIf="isVisible"
+        @fadeInUp
+        class="flex flex-col sm:flex-row gap-5 mb-16"
+      >
+        <button
+          [@pulse]="pulseState"
+          class="relative group overflow-hidden rounded-lg bg-gradient-to-r from-[#f3b55d] to-[#FAE753] text-black px-8 py-4 text-lg font-semibold shadow-lg"
+        >
+          <span class="relative z-10">Get Started</span>
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-[#fde047] to-[#f97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></span>
+        </button>
+
+        <button
+          class="relative group overflow-hidden rounded-lg border border-yellow-500/40 backdrop-blur-sm text-[#f5f1dc] px-8 py-4 text-lg font-medium hover:bg-white/5 transition"
+        >
+          <span class="relative z-10">View Our Work</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

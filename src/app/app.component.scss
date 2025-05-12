@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #9333ea, #3b82f6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7e22ce, #2563eb);
+}
+
+/* Smooth scrolling */
+:host ::ng-deep html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal overflow */
+:host ::ng-deep body {
+  overflow-x: hidden;
+}

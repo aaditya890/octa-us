@@ -1,0 +1,64 @@
+<section id="pricing" class="py-20 relative">
+  <div class="container mx-auto px-4 relative">
+    <div class="text-center max-w-3xl mx-auto mb-16" scrollAnimation>
+      <div @fadeInUp class="inline-block px-4 py-1 mb-6 rounded-full bg-gray-800 text-sm font-medium text-blue-400">
+        Pricing
+      </div>
+      <h2 @fadeInUp class="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+        Transparent Pricing Plans
+      </h2>
+      <p @fadeInUp class="text-gray-400">
+        Choose the perfect plan for your business needs. All plans include hosting, maintenance, and support.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" scrollAnimation>
+      <div *ngFor="let plan of plans; let i = index" 
+           @fadeInUp 
+           class="relative h-full rounded-lg overflow-hidden"
+           [ngClass]="{'border-purple-600': plan.popular, 'border-gray-800': !plan.popular}"
+           [style.animation-delay]="i * 100 + 'ms'">
+        <div class="bg-gray-900/50 border h-full"
+             [ngClass]="{'border-purple-600': plan.popular, 'border-gray-800': !plan.popular}">
+          <div class="absolute inset-0 bg-gradient-to-br"
+               [ngClass]="{'from-purple-900/20 to-blue-900/10': plan.color === 'purple', 'from-blue-900/20 to-purple-900/10': plan.color === 'blue'}"></div>
+
+          <div *ngIf="plan.popular" class="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center text-sm py-1">
+            Most Popular
+          </div>
+
+          <div class="p-6" [ngClass]="{'pt-10': plan.popular}">
+            <h3 class="text-xl font-bold text-white">{{ plan.title }}</h3>
+            <p class="text-gray-400 mb-4">{{ plan.description }}</p>
+            <div class="mt-4">
+              <span class="text-4xl font-bold text-white">{{ plan.price }}</span>
+              <span class="text-gray-400 ml-2">/ project</span>
+            </div>
+
+            <div class="mt-6">
+              <ul class="space-y-3">
+                <li *ngFor="let feature of plan.features; let j = index" 
+                    class="flex items-start"
+                    [@featureAnimation]="{ value: '', params: { delay: 300 + j * 100 } }">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                       class="mr-2 h-5 w-5 shrink-0 mt-0.5"
+                       [ngClass]="{'text-purple-500': plan.color === 'purple', 'text-blue-500': plan.color === 'blue'}">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span class="text-gray-300">{{ feature }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8">
+              <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 py-2 px-4 rounded-md">
+                Get Started
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

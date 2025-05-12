@@ -1,0 +1,64 @@
+<header class="fixed top-0 left-0 right-0 z-50 w-full border-b border-yellow-700/30 bg-black/90 backdrop-blur-md">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo (White) -->
+      <div class="flex items-center gap-2">
+       <img src="assets/lll.png" alt="OctaTech Logo" class="h-12 w-auto" />
+
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Services</a>
+        <a href="#work" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Our Work</a>
+        <a href="#process" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Process</a>
+        <a href="#pricing" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Pricing</a>
+        <a href="#contact" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Buttons -->
+      <div class="flex items-center gap-4">
+        <!-- Get Started (Desktop) -->
+        <button class="hidden md:flex bg-gradient-to-r from-[#ffcd31] to-[#FAE753] hover:from-yellow-400 hover:to-orange-500 text-black px-4 py-2 rounded-md items-center font-semibold shadow">
+          Get Started
+          <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Mobile Hamburger -->
+        <button class="md:hidden text-white p-2" (click)="toggleMenu()">
+          <svg *ngIf="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          <svg *ngIf="isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div *ngIf="isMenuOpen" [@mobileMenu] class="md:hidden mt-4 py-4 border-t border-yellow-700/30">
+      <nav class="flex flex-col gap-4 mb-4">
+        <a href="#services" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Services</a>
+        <a href="#work" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Our Work</a>
+        <a href="#process" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Process</a>
+        <a href="#pricing" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Pricing</a>
+        <a href="#contact" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Contact</a>
+      </nav>
+
+      <!-- Mobile CTA -->
+      <button class="w-full bg-gradient-to-r from-[#ffcd31] to-[#ff821c] hover:from-yellow-400 hover:to-orange-500 text-black font-semibold px-4 py-3 rounded-md flex items-center justify-center shadow">
+        Get Started
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
