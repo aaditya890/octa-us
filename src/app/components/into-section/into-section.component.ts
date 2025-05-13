@@ -33,7 +33,6 @@ export class IntoSectionComponent {
   team = 0;
   private hasAnimated = false;
 
-
   images = [
     'assets/sl1.png',
     'assets/sl2.png',
