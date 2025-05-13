@@ -7,13 +7,13 @@ import { ProcessSectionComponent } from "./components/process-section/process-se
 import { PricingSectionComponent } from "./components/pricing-section/pricing-section.component"
 import { CtaSectionComponent } from "./components/cta-section/cta-section.component"
 import { FooterComponent } from "./components/footer/footer.component"
+import { IntoSectionComponent } from "./components/into-section/into-section.component";
 
 @Component({
   selector: "app-root",
   standalone: true,
   imports: [
-    
-  // RouterOutlet,
+    // RouterOutlet,
     HeaderComponent,
     HeroSectionComponent,
     ServicesSectionComponent,
@@ -22,7 +22,8 @@ import { FooterComponent } from "./components/footer/footer.component"
     PricingSectionComponent,
     CtaSectionComponent,
     FooterComponent,
-  ],
+    IntoSectionComponent
+],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })

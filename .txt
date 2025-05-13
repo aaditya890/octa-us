@@ -1,0 +1,1 @@
+bg-gradient-to-r from-[#f3b55d] to-[#FAE753] - btn
