@@ -7,7 +7,6 @@ import { trigger, transition, style, animate, state } from "@angular/animations"
 })
 export class ScrollAnimationDirective implements OnInit, OnDestroy {
   private observer: IntersectionObserver | null = null
-
   constructor(private el: ElementRef,private intersectionObserverService: IntersectionObserverService) {}
 
   ngOnInit() {
