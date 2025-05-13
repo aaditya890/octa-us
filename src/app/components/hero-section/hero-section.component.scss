@@ -26,24 +26,6 @@
 
 button {
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(to right, #9333ea, #3b82f6);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
 }
 
 @keyframes bounce {
@@ -59,4 +41,9 @@ button {
   vertical-align: bottom;
   line-height: 1.2;
   overflow: visible;
+}
+canvas {
+  background: transparent;
+  border: none;
+  display: block;
 }
