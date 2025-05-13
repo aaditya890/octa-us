@@ -99,8 +99,8 @@
   padding: 0.25rem 1rem;
   border-radius: 9999px;
   background-color: rgba(234, 179, 8, 0.1);
-  border: 1px solid rgba(234, 179, 8, 0.5);
-  color: #eab308;
+  border: 1px solid #FFFCD9;
+  color: #FFFCD9;
   font-size: 0.875rem;
   font-weight: 500;
   backdrop-filter: blur(4px);
@@ -159,7 +159,7 @@ position: absolute;
   position: relative;
   display: inline-block;
   font-weight: 500;
-  color: #eab308;
+  color: hsl(0, 0%, 100%);
   
   &::after {
     content: '';
@@ -168,7 +168,7 @@ position: absolute;
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #eab308;
+    background-color: #edebe7;
     transition: width 0.3s ease;
   }
   
@@ -192,7 +192,7 @@ position: absolute;
   gap: 0.25rem;
   padding: 0.75rem 1.5rem;
   background-color: transparent;
-  color: #eab308;
+  color: #FFFCD9;
   font-weight: 500;
   border-radius: 0.375rem;
   border: 1px solid rgba(234, 179, 8, 0.5);
@@ -243,9 +243,7 @@ position: absolute;
   gap: 1.5rem;
   padding: 2rem;
   border-radius: 1rem;
-  border: 1px solid rgba(234, 179, 8, 0.2);
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
+  border: 0.3px solid #373736;
   width: 100%;
   
   @media (min-width: 1024px) {
@@ -283,9 +281,8 @@ position: absolute;
   justify-content: center;
   padding: 1.5rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(234, 179, 8, 0.2);
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
+  border: 0.3px solid #373736;
+  
 }
 
 .stat-icon {
@@ -309,12 +306,57 @@ position: absolute;
   margin-top: 1rem;
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(to right, #f7df1e, #eab308);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #FFFCD9;
 }
 
 .stat-label {
   color: #a1a1aa;
+}
+// Add this below existing styles or after .content-wrapper
+
+@media (max-width: 1023px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .left-content {
+    max-width: 100%;
+    text-align: center;
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .button-group {
+      justify-content: center;
+    }
+
+    .service-icons {
+      justify-content: center;
+    }
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    width: 100%;
+
+    .stat-card {
+      padding: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+    }
+  }
+
+  .badge {
+    margin: 0 auto;
+  }
 }

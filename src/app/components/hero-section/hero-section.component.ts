@@ -39,6 +39,8 @@ import { FloatingElementsComponent } from '../floating-elements/floating-element
 export class HeroSectionComponent implements OnInit, AfterViewInit {
   @ViewChild('heroCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('heroSection') heroSectionRef!: ElementRef;
+  shouldType = true; // will be passed to <app-typed-text>
+
   
   pulseState = 'normal';
   floatState = 'up';
@@ -71,8 +73,21 @@ export class HeroSectionComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
-    this.initCanvas();
+  this.initCanvas();
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      const isMobile = window.innerWidth < 1024;
+      this.shouldType = isMobile ? entry.isIntersecting : true;
+    },
+    { threshold: 0.1 }
+  );
+
+  if (this.heroSectionRef?.nativeElement) {
+    observer.observe(this.heroSectionRef.nativeElement);
   }
+}
+
   
  private initCanvas(): void {
   const canvas = this.canvasRef.nativeElement;
