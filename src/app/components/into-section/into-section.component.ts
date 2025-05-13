@@ -31,6 +31,8 @@ export class IntoSectionComponent {
   brands = 0;
   websites = 0;
   team = 0;
+  private hasAnimated = false;
+
 
   images = [
     'assets/sl1.png',
@@ -49,7 +51,7 @@ export class IntoSectionComponent {
     });
 
      this.setupIntersectionObserver()
-    this.animateCounters();
+  
   }
 
   animateCounters() {
@@ -86,20 +88,28 @@ export class IntoSectionComponent {
     }
   }
 
-  setupIntersectionObserver() {
-    this.observer = new IntersectionObserver(
-      ([entry]) => {
-        this.isVisible = entry.isIntersecting
-      },
-      { threshold: 0.1 },
-    )
+setupIntersectionObserver() {
+  this.observer = new IntersectionObserver(
+    ([entry]) => {
+      const isNowVisible = entry.isIntersecting;
 
-    setTimeout(() => {
-      if (this.sectionRef && this.sectionRef.nativeElement) {
-        this.observer?.observe(this.sectionRef.nativeElement)
+      if (isNowVisible && !this.hasAnimated) {
+        this.isVisible = true;
+        this.hasAnimated = true; // ✅ Ensure counter runs only once
+        this.animateCounters();
       }
-    })
-  }
+    },
+    { threshold: 0.3 }
+  );
+
+  setTimeout(() => {
+    if (this.sectionRef && this.sectionRef.nativeElement) {
+      this.observer?.observe(this.sectionRef.nativeElement);
+    }
+  });
+}
+
+
 
 
 }
