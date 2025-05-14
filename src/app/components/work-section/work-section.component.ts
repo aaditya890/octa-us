@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"
+ import { Component, ElementRef, ViewChild } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { trigger, transition, style, animate } from "@angular/animations"
 import { ScrollAnimationDirective } from "../../directives/scroll-animation.directive"
@@ -30,42 +30,83 @@ interface Project {
   ],
 })
 export class WorkSectionComponent {
-  projects: Project[] = [
+ @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
+  scrollInterval: any;
+
+  rawProjects = [
     {
-      title: "E-commerce Platform",
-      category: "Web Development",
-      image: "assets/videos/keyboard.mp4",
-      type: "video",
+      title: 'Portfolio Website',
+      description: 'Personal branding and resume showcase',
+      company: 'John Doe',
+      video:'assets/scroll-vid-01.webm'
+      // image: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"',
     },
     {
-      title: "Corporate Website",
-      category: "UI/UX Design",
-      image: "assets/images/project-2.jpg",
-      type: "image",
+      title: 'SaaS Dashboard',
+      description: 'Analytics and CRM system',
+      company: 'DataX Solutions',
+      video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     },
     {
-      title: "Mobile App",
-      category: "App Development",
-      image: "assets/videos/smartphone.mp4",
-      type: "video",
+      title: 'Mobile App UI',
+      description: 'User interface design for fitness app',
+      company: 'FitTech',
+      video: 'https://kzmpsrg0d7c74dibwdba.lite.vusercontent.net/placeholder.svg?height=300&width=500',
     },
     {
-      title: "SaaS Dashboard",
-      category: "Web Application",
-      image: "assets/images/project-4.jpg",
-      type: "image",
+      title: 'E-Learning Portal',
+      description: 'Education platform with live classes',
+      company: 'OctaLearn',
+      video: 'https://kzmpsrg0d7c74dibwdba.lite.vusercontent.net/placeholder.svg?height=300&width=500',
     },
     {
-      title: "Brand Identity",
-      category: "Branding",
-      image: "assets/images/project-5.jpg",
-      type: "image",
+      title: 'Healthcare Booking',
+      description: 'Appointment scheduling for doctors',
+      company: 'MediTrack',
+      video: 'assets/images/healthcare.jpg',
     },
-    {
-      title: "Marketing Website",
-      category: "Web Development",
-      image: "assets/videos/laptop.mp4",
-      type: "video",
+     {
+      title: 'Healthcare Booking',
+      description: 'Appointment scheduling for doctors',
+      company: 'MediTrack',
+      video: 'assets/images/healthcare.jpg',
     },
-  ]
+     {
+      title: 'Healthcare Booking',
+      description: 'Appointment scheduling for doctors',
+      company: 'MediTrack',
+      video: 'assets/images/healthcare.jpg',
+     }
+  ];
+
+  projects: any[] = [];
+
+  ngAfterViewInit() {
+    this.projects = [...this.rawProjects, ...this.rawProjects]; // duplicate for infinite scroll
+    this.startAutoScroll();
+  }
+
+  scrollLeft() {
+    this.carousel.nativeElement.scrollBy({ left: -350, behavior: 'smooth' });
+  }
+
+  scrollRight() {
+    const carousel = this.carousel.nativeElement;
+    carousel.scrollBy({ left: 350, behavior: 'smooth' });
+
+    const maxScroll = carousel.scrollWidth / 2;
+    if (carousel.scrollLeft >= maxScroll - carousel.clientWidth - 10) {
+      setTimeout(() => {
+        carousel.scrollTo({ left: 0, behavior: 'auto' });
+      }, 500);
+    }
+  }
+
+  startAutoScroll() {
+    this.scrollInterval = setInterval(() => this.scrollRight(), 4000);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.scrollInterval);
+  }
 }
