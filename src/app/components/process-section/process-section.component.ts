@@ -11,11 +11,10 @@ interface ProcessStep {
   align: "left" | "right"
   image: string
 }
-
 @Component({
   selector: "app-process-section",
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective],
+  imports: [CommonModule],
   templateUrl: "./process-section.component.html",
   styleUrls: ["./process-section.component.scss"],
   animations: [
