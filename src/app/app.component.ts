@@ -8,19 +8,16 @@ import { PricingSectionComponent } from "./components/pricing-section/pricing-se
 import { CtaSectionComponent } from "./components/cta-section/cta-section.component"
 import { FooterComponent } from "./components/footer/footer.component"
 import { IntoSectionComponent } from "./components/into-section/into-section.component";
-
+import Aos from 'aos';
 @Component({
   selector: "app-root",
   standalone: true,
   imports: [
-    // RouterOutlet,
     HeaderComponent,
     HeroSectionComponent,
     ServicesSectionComponent,
     WorkSectionComponent,
     ProcessSectionComponent,
-    PricingSectionComponent,
-    CtaSectionComponent,
     FooterComponent,
     IntoSectionComponent
 ],
@@ -38,6 +35,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor() {}
 
   ngOnInit(): void {
+    Aos.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      delay: 100,
+      offset: 120
+    });
     // Initialize any data or services
   }
 
@@ -97,7 +101,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (distance < 120) {
           this.ctx.beginPath()
           this.ctx.strokeStyle = `rgba(120, 120, 255, ${0.3 - distance / 400})`
-          this.ctx.lineWidth = 0.6
+          this.ctx.lineWidth = 0.6;
           this.ctx.moveTo(this.particles[i].x, this.particles[i].y)
           this.ctx.lineTo(this.particles[j].x, this.particles[j].y)
           this.ctx.stroke()

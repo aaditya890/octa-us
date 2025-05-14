@@ -41,13 +41,7 @@ export class IntoSectionComponent {
   currentImage = 0;
 
   ngOnInit(): void {
-    Aos.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      delay: 100,
-      offset: 120
-    });
+    
 
      this.setupIntersectionObserver()
   

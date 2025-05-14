@@ -14,7 +14,7 @@ interface Project {
 @Component({
   selector: "app-work-section",
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective, ParallaxDirective],
+  imports: [CommonModule],
   templateUrl: "./work-section.component.html",
   styleUrls: ["./work-section.component.scss"],
   animations: [
