@@ -32,13 +32,12 @@ interface Project {
 export class WorkSectionComponent {
  @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
   scrollInterval: any;
-
   rawProjects = [
     {
       title: 'Portfolio Website',
-      description: 'Personal branding and resume showcase',
+        description: 'Personal branding and resume showcase',
       company: 'John Doe',
-      video:'assets/scroll-vid-01.webm'
+      video:'assets/scroll-vid-01.mp4'
       // image: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"',
     },
     {

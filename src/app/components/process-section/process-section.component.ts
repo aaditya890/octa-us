@@ -28,39 +28,39 @@ interface ProcessStep {
   ],
 })
 export class ProcessSectionComponent {
-  steps: ProcessStep[] = [
+  steps = [
     {
       number: 1,
-      title: "Discovery",
-      description: "We start by understanding your business, goals, target audience, and project requirements.",
-      color: "purple",
-      align: "right",
-      image: "assets/images/discovery.jpg",
+      title: 'Research & Planning',
+      description: 'We begin with deep research and detailed planning to align with your brand goals.',
+      image: 'https://dummyimage.com/600x400/000/fff',
+      align: 'left',
+      color: 'yellow',
     },
     {
       number: 2,
-      title: "Planning & Design",
-      description: "We create wireframes and design mockups that align with your brand and project objectives.",
-      color: "blue",
-      align: "left",
-      image: "assets/images/planning.jpg",
+      title: 'Design & Build',
+      description: '	We design eye-catching visuals and build websites or creatives that work perfectly.',
+      image: 'https://dummyimage.com/600x400/000/fff',
+      align: 'right',
+      color: 'yellow',
     },
     {
       number: 3,
-      title: "Development",
-      description:
-        "Our developers bring the designs to life, creating a functional, responsive, and optimized website.",
-      color: "indigo",
-      align: "right",
-      image: "assets/images/development.jpg",
+      title: 'Promote & Manage',
+      description: 'We run campaigns on Google, social media, and more — and manage everything smoothly.',
+      image: 'https://dummyimage.com/600x400/000/fff',
+      align: 'left',
+      color: 'yellow',
     },
     {
       number: 4,
-      title: "Launch & Support",
-      description: "After thorough testing, we launch your site and provide ongoing support and maintenance.",
-      color: "purple",
-      align: "left",
-      image: "assets/images/launch.jpg",
+      title: 'Grow & Support',
+      description: '	We track results, improve performance, and support you as you grow.',
+      image: 'https://dummyimage.com/600x400/000/fff',
+      align: 'right',
+      color: 'yellow',
     },
-  ]
+  ];
 }
+
