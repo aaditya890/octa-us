@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CtaSectionComponent } from './cta-section.component';
+import { EnquiryFormComponent } from './enquiry-form.component';
 
-describe('CtaSectionComponent', () => {
-  let component: CtaSectionComponent;
-  let fixture: ComponentFixture<CtaSectionComponent>;
+describe('EnquiryFormComponent', () => {
+  let component: EnquiryFormComponent;
+  let fixture: ComponentFixture<EnquiryFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CtaSectionComponent]
+      imports: [EnquiryFormComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CtaSectionComponent);
+    fixture = TestBed.createComponent(EnquiryFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

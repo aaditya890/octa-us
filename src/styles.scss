@@ -71,8 +71,8 @@ $angular-landing-page-theme: mat.define-light-theme((
 }
 
 body {
-  @apply bg-background text-foreground m-0 font-sans;
-  font-family: poppins;
+  @apply bg-background text-foreground m-0;
+  font-family: "Poppins" !important;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }

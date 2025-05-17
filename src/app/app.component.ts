@@ -5,10 +5,10 @@ import { ServicesSectionComponent } from "./components/services-section/services
 import { WorkSectionComponent } from "./components/work-section/work-section.component"
 import { ProcessSectionComponent } from "./components/process-section/process-section.component"
 import { PricingSectionComponent } from "./components/pricing-section/pricing-section.component"
-import { CtaSectionComponent } from "./components/cta-section/cta-section.component"
 import { FooterComponent } from "./components/footer/footer.component"
 import { IntoSectionComponent } from "./components/into-section/into-section.component";
 import Aos from 'aos';
+import { EnquiryFormComponent } from "./components/enquiry-form/enquiry-form.component"
 @Component({
   selector: "app-root",
   standalone: true,
@@ -19,7 +19,9 @@ import Aos from 'aos';
     WorkSectionComponent,
     ProcessSectionComponent,
     FooterComponent,
-    IntoSectionComponent
+    EnquiryFormComponent,
+    IntoSectionComponent,
+    PricingSectionComponent
 ],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],

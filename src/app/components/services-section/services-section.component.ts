@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { trigger, transition, style, animate, query, stagger } from "@angular/animations";
 import { ScrollAnimationDirective } from "../../directives/scroll-animation.directive";
+import { HeadingComponent } from "../heading/heading.component";
 
 interface Service {
   icon: string;
@@ -15,7 +16,7 @@ interface Service {
 @Component({
   selector: "app-services-section",
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective],
+  imports: [CommonModule, ScrollAnimationDirective, HeadingComponent],
   templateUrl: "./services-section.component.html",
   styleUrls: ["./services-section.component.scss"],
   animations: [

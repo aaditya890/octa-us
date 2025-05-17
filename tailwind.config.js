@@ -38,6 +38,25 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      keyframes: {
+        extendLineLeft: {
+          '0%, 100%': { transform: 'scaleX(0)' },
+          '50%': { transform: 'scaleX(1)' },
+        },
+        extendLineRight: {
+          '0%, 100%': { transform: 'scaleX(0)' },
+          '50%': { transform: 'scaleX(1)' },
+        },
+        bottomPop: {
+          '0%': { height: '0', opacity: '0' },
+          '100%': { height: '1px', opacity: '1' },
+        },
+      },
+      animation: {
+        extendLineLeft: 'extendLineLeft 6s ease-in-out infinite',
+        extendLineRight: 'extendLineRight 6s ease-in-out infinite',
+        bottomPop: 'bottomPop 1s ease-out forwards',
+      },
     },
     container: {
       center: true,
