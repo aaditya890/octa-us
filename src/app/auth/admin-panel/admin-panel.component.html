@@ -1,8 +1,6 @@
 <div class=" text-white min-h-screen">
   <h2 class="text-2xl font-bold mb-4">📋 Enquiries</h2>
-
   <div *ngIf="loading" class="text-yellow-400">Loading enquiries...</div>
-
   <table *ngIf="!loading && enquiries.length" class="min-w-full border border-yellow-700">
     <thead>
       <tr class="bg-yellow-800">
@@ -21,11 +19,11 @@
         <td class="p-2">{{ enquiry.phone }}</td>
         <td class="p-2">{{ enquiry.subject }}</td>
         <td class="p-2">{{ enquiry.message }}</td>
+        <td class="p-2 text-sm">
+          {{ enquiry.createdAt?.toDate() | date:'short' }}
+        </td>
         <td class="p-2">
-          <button
-            type="button"
-            class="text-red-400 hover:underline cursor-pointer"
-            (click)="deleteEnquiry(enquiry.id)">
+          <button type="button" class="text-red-400 hover:underline cursor-pointer" (click)="deleteEnquiry(enquiry.id)">
             Delete
           </button>
         </td>
