@@ -8,14 +8,14 @@
 
       </div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Services</a>
-        <a href="#work" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Our Work</a>
-        <a href="#process" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Process</a>
-        <a href="#pricing" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Pricing</a>
-        <a href="#contact" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Contact</a>
-      </nav>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center gap-8">
+  <button (click)="scrollToSection('services')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Services</button>
+  <button (click)="scrollToSection('work')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Our Work</button>
+  <button (click)="scrollToSection('partners')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">partners</button>
+  <button (click)="scrollToSection('brochure')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Brochure</button>
+  <button (click)="scrollToSection('contact')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400 transition-colors">Contact</button>
+</nav>
 
       <!-- Buttons -->
       <div class="flex items-center gap-4">
@@ -44,13 +44,13 @@
 
     <!-- Mobile Menu -->
     <div *ngIf="isMenuOpen" [@mobileMenu] class="md:hidden mt-4 py-4 border-t border-yellow-700/30">
-      <nav class="flex flex-col gap-4 mb-4">
-        <a href="#services" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Services</a>
-        <a href="#work" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Our Work</a>
-        <a href="#process" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Process</a>
-        <a href="#pricing" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Pricing</a>
-        <a href="#contact" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400" (click)="closeMenu()">Contact</a>
-      </nav>
+       <nav class="flex flex-col gap-4 mb-4">
+    <button (click)="scrollToSection('services')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Services</button>
+    <button (click)="scrollToSection('work')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Our Work</button>
+    <button (click)="scrollToSection('partners')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Partners</button>
+    <button (click)="scrollToSection('brochure')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Brochure</button>
+    <button (click)="scrollToSection('contact')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Contact</button>
+  </nav>
 
       <!-- Mobile CTA -->
       <button class="w-full bg-gradient-to-r from-[#ffcd31] to-[#ff821c] hover:from-yellow-400 hover:to-orange-500 text-black font-semibold px-4 py-3 rounded-md flex items-center justify-center shadow">

@@ -1,6 +1,7 @@
-import { Component, HostListener } from "@angular/core"
-import { CommonModule } from "@angular/common"
-import { trigger, transition, style, animate } from "@angular/animations"
+import { Component, HostListener } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { trigger, transition, style, animate } from "@angular/animations";
+import { ScrollService } from "../../services/scroll.service";
 
 @Component({
   selector: "app-header",
@@ -30,17 +31,22 @@ import { trigger, transition, style, animate } from "@angular/animations"
 export class HeaderComponent {
   isMenuOpen = false;
 
-toggleMenu() {
-  this.isMenuOpen = !this.isMenuOpen;
-}
+  constructor(private scrollService: ScrollService) {}
 
-closeMenu() {
-  this.isMenuOpen = false;
-}
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 
-  @HostListener("window:scroll", [])
-  onWindowScroll() {
-    // You can add scroll effects for the header here if needed
+  scrollToSection(id: string) {
+    this.scrollService.scrollToAnchor(id);
+  }
+
+  scrollAndClose(id: string) {
+    this.scrollToSection(id);
+    this.closeMenu();
   }
 }

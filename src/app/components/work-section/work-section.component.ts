@@ -1,14 +1,21 @@
- import { Component, ElementRef, ViewChild } from "@angular/core"
-import { CommonModule } from "@angular/common"
-import { trigger, transition, style, animate } from "@angular/animations"
-import { ScrollAnimationDirective } from "../../directives/scroll-animation.directive"
-import { ParallaxDirective } from "../../directives/parallax.directive"
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { trigger, transition, style, animate } from "@angular/animations";
 
 interface Project {
-  title: string
-  category: string
-  image: string
-  type: "video" | "image"
+  title: string;
+  description: string;
+  company: string;
+  video?: string;
+  category?: string;
+}
+
+interface Star {
+  top: number;
+  left: number;
+  size: number;
+  delay: number;
+  opacity: number;
 }
 
 @Component({
@@ -23,22 +30,21 @@ interface Project {
         style({ opacity: 0, transform: "translateY(30px)" }),
         animate("800ms ease-out", style({ opacity: 1, transform: "translateY(0)" })),
       ]),
-    ]),
-    trigger("fadeIn", [
-      transition(":enter", [style({ opacity: 0 }), animate("1000ms ease-out", style({ opacity: 1 }))]),
-    ]),
+    ])
   ],
 })
-export class WorkSectionComponent {
- @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
+export class WorkSectionComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
   scrollInterval: any;
-  rawProjects = [
+  isPaused = false;
+  stars: Star[] = [];
+
+  rawProjects: Project[] = [
     {
       title: 'Portfolio Website',
-        description: 'Personal branding and resume showcase',
+      description: 'Personal branding and resume showcase',
       company: 'John Doe',
-      video:'assets/scroll-vid-01.mp4'
-      // image: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"',
+      video: 'assets/scroll-vid-01.mp4'
     },
     {
       title: 'SaaS Dashboard',
@@ -63,49 +69,56 @@ export class WorkSectionComponent {
       description: 'Appointment scheduling for doctors',
       company: 'MediTrack',
       video: 'assets/images/healthcare.jpg',
-    },
-     {
-      title: 'Healthcare Booking',
-      description: 'Appointment scheduling for doctors',
-      company: 'MediTrack',
-      video: 'assets/images/healthcare.jpg',
-    },
-     {
-      title: 'Healthcare Booking',
-      description: 'Appointment scheduling for doctors',
-      company: 'MediTrack',
-      video: 'assets/images/healthcare.jpg',
-     }
+    }
   ];
 
-  projects: any[] = [];
+  projects: Project[] = [];
+
+  ngOnInit() {
+    this.generateStars();
+  }
 
   ngAfterViewInit() {
-    this.projects = [...this.rawProjects, ...this.rawProjects]; // duplicate for infinite scroll
+    this.projects = [...this.rawProjects, ...this.rawProjects]; // Duplicate for looping
     this.startAutoScroll();
   }
 
-  scrollLeft() {
-    this.carousel.nativeElement.scrollBy({ left: -350, behavior: 'smooth' });
+  ngOnDestroy() {
+    clearInterval(this.scrollInterval);
   }
 
-  scrollRight() {
-    const carousel = this.carousel.nativeElement;
-    carousel.scrollBy({ left: 350, behavior: 'smooth' });
-
-    const maxScroll = carousel.scrollWidth / 2;
-    if (carousel.scrollLeft >= maxScroll - carousel.clientWidth - 10) {
-      setTimeout(() => {
-        carousel.scrollTo({ left: 0, behavior: 'auto' });
-      }, 500);
+  generateStars() {
+    for (let i = 0; i < 100; i++) {
+      this.stars.push({
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        size: Math.random() * 3,
+        delay: Math.random() * 5,
+        opacity: Math.random()
+      });
     }
   }
 
-  startAutoScroll() {
-    this.scrollInterval = setInterval(() => this.scrollRight(), 4000);
+ startAutoScroll() {
+  this.scrollInterval = setInterval(() => {
+    if (!this.isPaused && this.carousel) {
+      const el = this.carousel.nativeElement;
+      el.scrollBy({ left: 450, behavior: 'smooth' }); // Scroll 1 card width
+
+      // Reset to beginning for infinite loop
+      if (el.scrollLeft >= el.scrollWidth / 2) {
+        el.scrollTo({ left: 0, behavior: 'auto' });
+      }
+    }
+  }, 2000); // ⏱️ Every 3 seconds
+}
+
+
+  pauseAutoScroll() {
+    this.isPaused = true;
   }
 
-  ngOnDestroy(): void {
-    clearInterval(this.scrollInterval);
+  resumeAutoScroll() {
+    this.isPaused = false;
   }
 }
