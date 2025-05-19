@@ -1,95 +1,84 @@
 <!-- featured-integrations.component.html -->
 <section id="partners" class="w-full pb-0 pt-16 relative overflow-hidden">
-   <div class="text-center mb-10">
-  <div @fadeInUp class="w-full max-w-7xl px-4 mx-auto">
-  <div class="relative flex items-center justify-center">
-    
-    <!-- Left animated line -->
-    <div class="flex-1 h-px bg-gray-300 origin-right animate-extendLineLeft"></div>
-
-    <!-- Center heading with pop-up bottom line -->
-    <div class="relative mx-4">
-      <div class="bg-black text-[#FFFCD9] px-6 py-3 rounded">
-        <h2 class="text-xl md:text-4xl font-extrabold tracking-wider">OUR AFFILIATIONS</h2>
+  <div class="text-center mb-10">
+    <div @fadeInUp class="w-full max-w-7xl px-4 mx-auto">
+      <div class="relative flex items-center justify-center">
+        <div class="flex-1 h-px bg-gray-300 origin-right animate-extendLineLeft"></div>
+        <div class="relative mx-4">
+          <div class="bg-black text-[#FFFCD9] px-6 py-3 rounded">
+            <h2 class="text-xl md:text-4xl font-extrabold tracking-wider">OUR AFFILIATIONS</h2>
+          </div>
+          <div class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-yellow-300 to-yellow-500 animate-bottomPop"></div>
+        </div>
+        <div class="flex-1 h-px bg-gray-300 origin-left animate-extendLineRight"></div>
       </div>
-      <div class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-yellow-300 to-yellow-500 animate-bottomPop"></div>
     </div>
-
-    <!-- Right animated line -->
-    <div class="flex-1 h-px bg-gray-300 origin-left animate-extendLineRight"></div>
-  </div>
-</div>
   </div>
 
   <!-- Integration Carousel -->
-  <div class="relative w-full py-8 z-10">
-    <!-- Left Navigation Arrow -->
-    <!-- <button 
-      (click)="prevIntegration()" 
-      class="absolute md:block hidden left-14 top-20 transform -translate-y-1/2 z-10 text-gray-500 hover:text-[#FFFCD9] transition-colors"
-      aria-label="Previous integration">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button> -->
-    
-    <!-- Integration Display - Full Width -->
-    <div class="flex flex-col items-center">
-      <!-- Logo Row -->
-      <div class="flex items-center justify-center w-full mb-6 overflow-hidden">
-        <!-- Left Side Logos -->
-        <div class="flex items-center justify-end space-x-2 md:space-x-4 w-[45%]">
-          <div *ngFor="let logo of getLeftSideLogos()" 
-               class="w-24 md:w-32 h-10 opacity-50 filter grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0 cursor-pointer"
-               (click)="setCurrentIntegrationByLogo(logo)">
-            <img [src]="logo.logo" [alt]="logo.name" class="w-full h-full object-contain">
-          </div>
-        </div>
-        
-        <!-- Current Integration (Featured) -->
-        <div class="mx-4 md:mx-6 transition-all duration-500 ease-in-out">
-          <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full shadow-lg flex items-center justify-center p-3 mx-auto border border-[#FFFCD9]/20">
-            <img [src]="currentIntegration.logo" [alt]="currentIntegration.name" class="max-w-full max-h-full object-contain">
-          </div>
-        </div>
-        
-        <!-- Right Side Logos -->
-        <div class="flex items-center justify-start space-x-2 md:space-x-4 w-[45%]">
-          <div *ngFor="let logo of getRightSideLogos()" 
-               class="w-24 md:w-32 h-10 opacity-50 filter grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0 cursor-pointer"
-               (click)="setCurrentIntegrationByLogo(logo)">
-            <img [src]="logo.logo" [alt]="logo.name" class="w-full h-full object-contain">
-          </div>
+  <div class="relative w-full py-8 z-10 flex flex-col items-center">
+    <!-- Logos -->
+    <div class="flex items-center justify-center w-full mb-6 overflow-hidden">
+      <!-- Left Logos -->
+      <div class="flex items-center justify-end space-x-2 md:space-x-4 w-[45%]">
+        <div *ngFor="let logo of getLeftSideLogos()" 
+             class="w-24 md:w-32 h-10 opacity-50 filter grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0 cursor-pointer"
+             (click)="setCurrentIntegrationByLogo(logo)">
+          <img [src]="logo.logo" [alt]="logo.name" class="w-full h-full object-contain">
         </div>
       </div>
-      
-      <!-- Integration Name -->
-      <h3 class="text-lg font-medium text-[#FFFCD9] mb-6">{{ currentIntegration.name }}</h3>
-      
-      <!-- Navigation Dots -->
-      <div class="flex justify-center space-x-2 mb-6">
+
+      <!-- Current Center Logo -->
+      <div class="mx-4 md:mx-6 transition-all duration-500 ease-in-out">
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full shadow-lg flex items-center justify-center p-3 mx-auto border border-[#FFFCD9]/20">
+          <img [src]="currentIntegration.logo" [alt]="currentIntegration.name" class="max-w-full max-h-full object-contain">
+        </div>
+      </div>
+
+      <!-- Right Logos -->
+      <div class="flex items-center justify-start space-x-2 md:space-x-4 w-[45%]">
+        <div *ngFor="let logo of getRightSideLogos()" 
+             class="w-24 md:w-32 h-10 opacity-50 filter grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0 cursor-pointer"
+             (click)="setCurrentIntegrationByLogo(logo)">
+          <img [src]="logo.logo" [alt]="logo.name" class="w-full h-full object-contain">
+        </div>
+      </div>
+    </div>
+
+    <!-- Integration Name -->
+    <h3 class="text-lg font-medium text-[#FFFCD9] mb-4">{{ currentIntegration.name }}</h3>
+
+    <!-- Integration Description -->
+    <p class="text-center text-sm max-w-5xl text-white px-0 md:px-3 mb-6">
+      See when your accounts overlap with your partners' sales pipelines and customer lists directly in Salesforce.<br />
+      Then use our Custom Overlaps object to send data directly into Salesforce for advanced reporting, workflows, lead routing, and more.
+    </p>
+
+    <!-- Navigation Dots -->
+    <div class="flex justify-center items-center space-x-4 mb-2">
+      <button 
+        (click)="prevIntegration()" 
+        class="text-white hover:text-yellow-300 focus:outline-none text-2xl">
+        ‹
+      </button>
+
+      <div class="flex space-x-2">
         <button 
           *ngFor="let integration of partners; let i = index" 
           (click)="setCurrentIntegration(i)"
           [ngClass]="[
-            'w-2 h-2 rounded-full transition-all duration-300',
-            currentIndex === i ? 'bg-[#FFFCD9]' : 'bg-gray-600 hover:bg-gray-500'
+            'w-2.5 h-2.5 rounded-full transition-all duration-300',
+            currentIndex === i ? 'bg-yellow-300' : 'bg-gray-500 hover:bg-gray-400'
           ]"
           [attr.aria-label]="'View ' + integration.name">
         </button>
       </div>
-      
-     
+
+      <button 
+        (click)="nextIntegration()" 
+        class="text-white hover:text-yellow-300 focus:outline-none text-2xl">
+        ›
+      </button>
     </div>
-    
-    <!-- Right Navigation Arrow -->
-    <!-- <button 
-      (click)="nextIntegration()" 
-      class="absolute md:block hidden right-14 top-20 transform -translate-y-1/2 z-10 text-gray-500 hover:text-[#FFFCD9] transition-colors"
-      aria-label="Next integration">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </button> -->
   </div>
 </section>
