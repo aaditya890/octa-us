@@ -17,7 +17,7 @@ interface Service {
 @Component({
   selector: "app-services-section",
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective, HeadingComponent],
+  imports: [CommonModule],
   templateUrl: "./services-section.component.html",
   styleUrls: ["./services-section.component.scss"],
   animations: [
