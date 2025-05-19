@@ -1,9 +1,10 @@
 // src/app/components/services-section/services-section.component.ts
-import { Component } from "@angular/core";
+import { Component, AfterViewInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { trigger, transition, style, animate, query, stagger } from "@angular/animations";
 import { ScrollAnimationDirective } from "../../directives/scroll-animation.directive";
 import { HeadingComponent } from "../heading/heading.component";
+import AOS from "aos";
 
 interface Service {
   icon: string;
@@ -32,15 +33,17 @@ interface Service {
           ":enter",
           [
             style({ opacity: 0, transform: "translateY(30px)" }),
-            stagger("100ms", [animate("800ms ease-out", style({ opacity: 1, transform: "translateY(0)" }))]),
+            stagger("100ms", [
+              animate("800ms ease-out", style({ opacity: 1, transform: "translateY(0)" }))
+            ]),
           ],
-          { optional: true },
+          { optional: true }
         ),
       ]),
     ]),
   ],
 })
-export class ServicesSectionComponent {
+export class ServicesSectionComponent implements AfterViewInit {
   services: Service[] = [
     {
       icon: "globe",
@@ -78,4 +81,13 @@ export class ServicesSectionComponent {
       color: "indigo",
     },
   ];
+
+  get hasServices(): boolean {
+  return this.services.length > 0;
+}
+
+
+  ngAfterViewInit(): void {
+    AOS.init({ duration: 800, once: true });
+  }
 }
