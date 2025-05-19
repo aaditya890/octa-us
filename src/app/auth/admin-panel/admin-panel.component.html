@@ -1,0 +1,39 @@
+<div class=" text-white min-h-screen">
+  <h2 class="text-2xl font-bold mb-4">📋 Enquiries</h2>
+
+  <div *ngIf="loading" class="text-yellow-400">Loading enquiries...</div>
+
+  <table *ngIf="!loading && enquiries.length" class="min-w-full border border-yellow-700">
+    <thead>
+      <tr class="bg-yellow-800">
+        <th class="p-2 text-left">Name</th>
+        <th class="p-2 text-left">Email</th>
+        <th class="p-2 text-left">Phone</th>
+        <th class="p-2 text-left">Subject</th>
+        <th class="p-2 text-left">Message</th>
+        <th class="p-2 text-left">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let enquiry of enquiries" class="border-t border-yellow-700">
+        <td class="p-2">{{ enquiry.name }}</td>
+        <td class="p-2">{{ enquiry.email }}</td>
+        <td class="p-2">{{ enquiry.phone }}</td>
+        <td class="p-2">{{ enquiry.subject }}</td>
+        <td class="p-2">{{ enquiry.message }}</td>
+        <td class="p-2">
+          <button
+            type="button"
+            class="text-red-400 hover:underline cursor-pointer"
+            (click)="deleteEnquiry(enquiry.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && enquiries.length === 0" class="text-yellow-500">
+    No enquiries found.
+  </div>
+</div>

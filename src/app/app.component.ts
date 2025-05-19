@@ -9,11 +9,13 @@ import { FooterComponent } from "./components/footer/footer.component"
 import { IntoSectionComponent } from "./components/into-section/into-section.component";
 import Aos from 'aos';
 import { EnquiryFormComponent } from "./components/enquiry-form/enquiry-form.component"
+import { Router,RouterOutlet } from "@angular/router"
 @Component({
   selector: "app-root",
   standalone: true,
   imports: [
     HeaderComponent,
+    RouterOutlet,
     HeroSectionComponent,
     ServicesSectionComponent,
     WorkSectionComponent,
@@ -34,7 +36,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   private particles: any[] = []
   private animationFrameId = 0
 
-  constructor() {}
+  isAdminRoute = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      this.isAdminRoute = this.router.url.startsWith('/admin');
+    });
+  }
 
   ngOnInit(): void {
     Aos.init({

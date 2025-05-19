@@ -45,11 +45,11 @@
     <!-- Mobile Menu -->
     <div *ngIf="isMenuOpen" [@mobileMenu] class="md:hidden mt-4 py-4 border-t border-yellow-700/30">
        <nav class="flex flex-col gap-4 mb-4">
-    <button (click)="scrollToSection('services')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Services</button>
-    <button (click)="scrollToSection('work')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Our Work</button>
-    <button (click)="scrollToSection('partners')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Partners</button>
-    <button (click)="scrollToSection('brochure')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Brochure</button>
-    <button (click)="scrollToSection('contact')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Contact</button>
+    <button (click)="scrollAndClose('services')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Services</button>
+    <button (click)="scrollAndClose('work')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Our Work</button>
+    <button (click)="scrollAndClose('partners')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Partners</button>
+    <button (click)="scrollAndClose('brochure')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Brochure</button>
+    <button (click)="scrollAndClose('contact')" class="text-sm font-medium text-[#f5f1dc] hover:text-yellow-400">Contact</button>
   </nav>
 
       <!-- Mobile CTA -->
